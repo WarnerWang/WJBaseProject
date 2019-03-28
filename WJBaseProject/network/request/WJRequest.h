@@ -5,6 +5,37 @@
 //  Created by 王杰 on 2019/3/27.
 //  Copyright © 2019 和信金谷. All rights reserved.
 //
+/**
+ 当前默认的请求格式为：
+ {
+     token:""
+     userId:""
+     content:{
+         header:{
+             userId:""
+             source:""
+             ip:""
+             xingeToken:""
+             deviceId:""
+             version:""
+         }
+         userId:""
+     }
+ }
+ 
+ 关于WJRequest：
+ 调用WJHttpHelper进行网络请求时的参数request只需继承自WJRequest即可
+ 所有的param内容只需要当做属性写在继承的WJRequest中然后赋值即可
+ 继承自WJRequest类中的属性会放在content内容中。
+ 如果请求格式不符合需求只需自行更改WJRequest.m中
+ - (NSDictionary *)toDictionary 和- (NSDictionary *)toEncryptDictonary
+ 这两个方法中的内容即可
+ 
+ 关于WJResponse：
+ 请求结果需继承自WJResponse
+ 转model需调用 Class *response = [Class yy_modelWithJSON:jsonString];
+ Class为创建的继承自WJResponse的对象
+ */
 
 #import "WJBaseModel.h"
 

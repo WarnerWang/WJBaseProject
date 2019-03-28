@@ -5,6 +5,8 @@
 //  Created by 王杰 on 2019/3/27.
 //  Copyright © 2019 和信金谷. All rights reserved.
 //
+//  基于YYModel和AFNetworking二次封装的网络库
+//  YYModel的使用请移步 https://github.com/ibireme/YYModel
 
 #import <Foundation/Foundation.h>
 #import "WJRequest.h"
@@ -46,35 +48,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  普通post请求 -- 以dict为请求参数
- @param request 请求对象
- @param sucBlock 成功回调
- @param responseErrorBlock 失败回调
- @param endRefreshBlock 结束回调
  */
 +(void)post:(WJRequest *)request sucBlock:(PostRequestSucBlock)sucBlock responseErrorBlock:(ResponseErrorBlock)responseErrorBlock endRefreshBlock:(EndRefreshBlock)endRefreshBlock;
 
-
 /**
  普通get请求 -- 以json串为请求参数
- @param request 请求对象
- @param sucBlock 成功回调
- @param responseErrorBlock 失败回调
- @param endRefreshBlock 结束回调
  */
 +(void)getRequest:(WJRequest *)request sucBlock:(PostRequestSucBlock)sucBlock responseErrorBlock:(ResponseErrorBlock)responseErrorBlock endRefreshBlock:(EndRefreshBlock)endRefreshBlock;
 
-
 /**
  普通get请求 -- 以dict为请求参数
- @param request 请求对象
- @param sucBlock 成功回调
- @param responseErrorBlock 失败回调
- @param endRefreshBlock 结束回调
  */
 +(void)get:(WJRequest *)request sucBlock:(PostRequestSucBlock)sucBlock responseErrorBlock:(ResponseErrorBlock)responseErrorBlock endRefreshBlock:(EndRefreshBlock)endRefreshBlock;
 
 /**
  上传文件
+ @param filePaths 文件存储路径
  */
 +(void)postRequest:(WJRequest *) request sucBlock:(PostRequestSucBlock)sucBlock responseErrorBlock:(ResponseErrorBlock)responseErrorBlock endRefreshBlock:(EndRefreshBlock)endRefreshBlock filePaths:(NSArray *)filePaths;
 
