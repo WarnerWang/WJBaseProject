@@ -111,7 +111,7 @@
     hud.contentColor = [UIColor whiteColor];
     hud.mode = MBProgressHUDModeText;
     hud.removeFromSuperViewOnHide = YES;
-    CGFloat yOffset = (kScheenHeight - kBtmSafeareaHeight)/2 - kBtmSafeareaHeight - kTabbarHeight - 40;
+    CGFloat yOffset = (kScheenHeight - kBtmSafeareaHeight)/2 - kBtmSafeareaHeight - kTabBarHeight - 40;
     hud.offset = CGPointMake(hud.offset.x, yOffset);
     [hud showAnimated:YES];
     [hud hideAnimated:YES afterDelay:delay];

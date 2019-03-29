@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark 导航栏渐变时使用以下属性和方法
+/// 需要使用导航栏渐变
+@property (nonatomic,assign) BOOL needNavGradiend;
+
 @property (nonatomic,strong) UIView *titleView;//导航栏的titleView
 
 @property (nonatomic,assign) CGFloat disappearAlpha;

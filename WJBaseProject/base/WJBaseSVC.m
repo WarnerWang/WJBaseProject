@@ -48,6 +48,9 @@
  */
 - (void)setScrollViewDelegateVC:(__autoreleasing id<UIScrollViewDelegate>)objc{
     self.scrollView.delegate = objc;
+    if (!_needNavGradiend) {
+        return;
+    }
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
@@ -57,6 +60,9 @@
  *  @param alpha 导航栏透明度（0~0.99）。不能为1
  */
 - (void)setNavaBarColorWithAlpha:(CGFloat)alpha{
+    if (!_needNavGradiend) {
+        return;
+    }
     if (alpha >= 0.99) {
         [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     }else {
@@ -66,30 +72,33 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat alpha = 0;
-    
-    CGFloat minAlphaOffset = 64;
-    CGFloat maxAlphaOffset = 200;
-    if (offsetY) {
-        alpha = offsetY/(maxAlphaOffset-minAlphaOffset);
-    }
-    
-    if (alpha > 0) {
-        _titleView.hidden = NO;
-        if (alpha >= 1) {
-            alpha = 0.99;
-        }
-    } else {
+    if (_needNavGradiend) {
+        CGFloat offsetY = scrollView.contentOffset.y;
+        CGFloat alpha = 0;
         
-        _titleView.hidden = YES;
+        CGFloat minAlphaOffset = 64;
+        CGFloat maxAlphaOffset = 200;
+        if (offsetY) {
+            alpha = offsetY/(maxAlphaOffset-minAlphaOffset);
+        }
+        
+        if (alpha > 0) {
+            _titleView.hidden = NO;
+            if (alpha >= 1) {
+                alpha = 0.99;
+            }
+        } else {
+            
+            _titleView.hidden = YES;
+        }
+        _disappearAlpha = alpha;
+        _titleView.alpha = alpha;
+        
+        // 设置导航条的背景图片
+        UIImage *image = [UIImage imageWithColor:kNavColorWithAlpha(alpha)];
+        [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     }
-    _disappearAlpha = alpha;
-    _titleView.alpha = alpha;
     
-    // 设置导航条的背景图片
-    UIImage *image = [UIImage imageWithColor:kNavColorWithAlpha(alpha)];
-    [self.navigationController.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 }
 
 @end

@@ -23,8 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(UIView*)createWithBackgroundColor:(UIColor*)color;
 
+/// 增加遮罩 alpha为遮罩透明度
 - (void)addMaskViewWithAlpha:(CGFloat)alpha;
 
+/// 添加边界线
 - (void)addLineWithDirection:(LineDirection)direction Color:(UIColor *)color Width:(CGFloat)width;
 
 

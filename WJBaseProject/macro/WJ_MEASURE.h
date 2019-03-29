@@ -19,7 +19,7 @@
 #define kNavHeight  44.0+kNotificationHeight
 
 #pragma mark tabBar高度
-#define kTabbarHeight 49.0
+#define kTabBarHeight 49.0
 
 #define kNavColorWithAlpha(a) RGBAHEX(0xff0033,a)
 

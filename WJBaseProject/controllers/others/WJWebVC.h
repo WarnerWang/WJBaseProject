@@ -1,5 +1,5 @@
 //
-//  WJWebView.h
+//  WJWebVC.h
 //  WJBaseProject
 //
 //  Created by 王杰 on 2019/3/26.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WJWebView : WJBaseVC
+@interface WJWebVC : WJBaseVC
 
 /**
  是否根据网页改变标题

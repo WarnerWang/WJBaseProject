@@ -6,6 +6,8 @@
 //  Copyright © 2019 和信金谷. All rights reserved.
 //
 /**
+ 基于YYModel和AFNetworking二次封装的网络库
+ YYModel的使用请移步 https://github.com/ibireme/YYModel
  当前默认的请求格式为：
  {
      token:""
@@ -55,21 +57,23 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WJRequest : WJBaseModel
 
 @property (nonatomic,strong) WJRequestHeader *header;
-@property (nonatomic,copy) NSString* transcode;//交易代码--由服务方指定，服务器方会根据交易码进行请求处理 （不能为空）
+/// 接口地址后缀 baseUrl后面拼接上此参数为完整的请求地址(使用时只需子类在初始化方法中赋值即可  例：self.transcode = @"/userServiceI/login")
+@property (nonatomic,copy,nonnull) NSString* transcode;
 @property (nonatomic,copy) NSString* token;//用户登录token
 @property (nonatomic,copy) NSString* userId;
+/// 加密密钥 默认是登录秘钥，非登录接口使用默认密钥(只需子类在初始化方法中令self.scretKey = DES_KEY即可)
 @property (nonatomic,copy) NSString* scretKey;
 
 #pragma mark 参数为字典时使用以下两个方法生成参数
 /// 非加密参数
 - (NSDictionary *)toDictionary;
-/// 加密参数
+/// 加密参数--一层加密，只给content加密，秘钥为self.scretKey
 - (NSDictionary *)toEncryptDictonary;
 
 #pragma mark 参数为json串时使用以下两个方法生成参数
 /// 非加密参数
 - (NSString *)toJsonString;
-/// 加密参数
+/// 加密参数 -- 两层加密，第一层给content加密，秘钥为self.scretKey，第二层给整体加密，秘钥为默认密钥 DES_KEY
 - (NSString *)toEncryptJsonString;
 
 

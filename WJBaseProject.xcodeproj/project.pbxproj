@@ -49,7 +49,7 @@
 		F3955919224A077E00A8750A /* WJDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F3955918224A077E00A8750A /* WJDataHelper.m */; };
 		F3955921224A149D00A8750A /* WJWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3955920224A149D00A8750A /* WJWKWebView.m */; };
 		F3955924224A14C800A8750A /* WJScriptMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3955923224A14C800A8750A /* WJScriptMessage.m */; };
-		F395592B224A1A5E00A8750A /* WJWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F395592A224A1A5E00A8750A /* WJWebView.m */; };
+		F395592B224A1A5E00A8750A /* WJWebVC.h.m in Sources */ = {isa = PBXBuildFile; fileRef = F395592A224A1A5E00A8750A /* WJWebVC.h.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,8 +158,8 @@
 		F3955920224A149D00A8750A /* WJWKWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJWKWebView.m; sourceTree = "<group>"; };
 		F3955922224A14C800A8750A /* WJScriptMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJScriptMessage.h; sourceTree = "<group>"; };
 		F3955923224A14C800A8750A /* WJScriptMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJScriptMessage.m; sourceTree = "<group>"; };
-		F3955929224A1A5E00A8750A /* WJWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJWebView.h; sourceTree = "<group>"; };
-		F395592A224A1A5E00A8750A /* WJWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJWebView.m; sourceTree = "<group>"; };
+		F3955929224A1A5E00A8750A /* WJWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJWebVC.h; sourceTree = "<group>"; };
+		F395592A224A1A5E00A8750A /* WJWebVC.h.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJWebVC.h.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,8 +470,8 @@
 		F3955928224A1A4600A8750A /* others */ = {
 			isa = PBXGroup;
 			children = (
-				F3955929224A1A5E00A8750A /* WJWebView.h */,
-				F395592A224A1A5E00A8750A /* WJWebView.m */,
+				F3955929224A1A5E00A8750A /* WJWebVC.h */,
+				F395592A224A1A5E00A8750A /* WJWebVC.h.m */,
 			);
 			path = others;
 			sourceTree = "<group>";
@@ -663,7 +663,7 @@
 				F3955921224A149D00A8750A /* WJWKWebView.m in Sources */,
 				F3955924224A14C800A8750A /* WJScriptMessage.m in Sources */,
 				F330E1A2224B74D1004F4D52 /* WJPageRequest.m in Sources */,
-				F395592B224A1A5E00A8750A /* WJWebView.m in Sources */,
+				F395592B224A1A5E00A8750A /* WJWebVC.h.m in Sources */,
 				F330E179224B1C13004F4D52 /* NSDate+Helpers.m in Sources */,
 				F330E19A224B1C26004F4D52 /* UIViewController+Helpers.m in Sources */,
 				F39558BA2243382100A8750A /* main.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  WJWebView.m
+//  WJWebVC.m
 //  WJBaseProject
 //
 //  Created by 王杰 on 2019/3/26.
 //  Copyright © 2019 和信金谷. All rights reserved.
 //
 
-#import "WJWebView.h"
+#import "WJWebVC.h"
 #import "WJWKWebView.h"
 #import "NSString+Helpers.h"
 #import "WJUtils.h"
 #import "WJ_MEASURE.h"
 
-@interface WJWebView ()<WKUIDelegate, WKNavigationDelegate,WJWKWebViewMessageHandleDelegate>
+@interface WJWebVC ()<WKUIDelegate, WKNavigationDelegate,WJWKWebViewMessageHandleDelegate>
 
 @property (nonatomic,copy) NSString* url;
 @property (nonatomic,copy) NSString* localHtmlName;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation WJWebView
+@implementation WJWebVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,7 +70,7 @@
 
 
 - (void)initProgressView{
-    _progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, kNotificationHeight+kNavHeight, self.view.frame.size.width, 2)];
+    _progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, kNavHeight, self.view.frame.size.width, 2)];
     _progressView.trackTintColor = [UIColor clearColor];
     [self.view addSubview:_progressView];
 }
@@ -115,7 +115,7 @@
 
 - (void)setupWebView {
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
-    CGFloat topHeight = kNotificationHeight + kNavHeight + 1;
+    CGFloat topHeight = kNavHeight + 1;
     _webView = [[WJWKWebView alloc]initWithFrame:CGRectMake(0, topHeight, self.view.frame.size.width, self.view.frame.size.height - topHeight) configuration:config];
     _webView.wj_messageHandlerDelegate = self;
     _webView.navigationDelegate = self;

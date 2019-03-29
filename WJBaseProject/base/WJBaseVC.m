@@ -11,6 +11,7 @@
 #import "UIColor+Helpers.h"
 #import "UIFont+Helpers.h"
 #import "UIDevice+Helpers.h"
+#import "WJWebVC.h"
 
 @interface WJBaseVC ()<UIGestureRecognizerDelegate>
 
@@ -39,6 +40,12 @@
     self.navigationBarHidden = NO;
     [self setLeftBackBtn:@"icon_fanhui"];
     self.view.backgroundColor = [UIColor randomColor];
+    [self setRightBtnWithTitle:@"网页" clickAction:^(UIButton * _Nonnull sender) {
+        WJWebVC *webVC = [[WJWebVC alloc]init];
+        webVC.changeTitle = YES;
+        [webVC addWebView:@"https://www.baidu.com"];
+        [self pushNextVCByInstance:webVC];
+    }];
 }
 
 - (void)setNavigationBarHidden:(BOOL)navigationBarHidden{
