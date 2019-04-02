@@ -45,6 +45,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 设置圆角及边框
 - (void)setCornerWithRadius:(CGFloat)radius borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth;
 
+/// 设置部分圆角
+- (void)setCorners:(UIRectCorner)rectCorner cornerRadii:(CGFloat)cornewRadii;
+
+/**
+ 为视图添加从左到右的两种颜色渐变
+ @param startColor 开始颜色
+ @param endColor 结束颜色
+ */
+- (void)addGradientWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
+
 /**
  为视图添加从左到右的带圆角的两种颜色渐变
  @param startColor 开始颜色

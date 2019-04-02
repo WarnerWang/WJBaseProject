@@ -69,6 +69,16 @@
     self.layer.borderWidth = borderWidth;
 }
 
+/// 设置部分圆角
+- (void)setCorners:(UIRectCorner)rectCorner cornerRadii:(CGFloat)cornewRadii{
+    [self layoutIfNeeded];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:rectCorner cornerRadii:CGSizeMake(cornewRadii, cornewRadii)];
+    CAShapeLayer *maskLayout = [[CAShapeLayer alloc]init];
+    maskLayout.frame = self.bounds;
+    maskLayout.path = maskPath.CGPath;
+    self.layer.mask = maskLayout;
+}
+
 /**
  为视图添加从左到右的两种颜色渐变
  @param startColor 开始颜色
