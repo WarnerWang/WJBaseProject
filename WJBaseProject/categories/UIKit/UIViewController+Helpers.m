@@ -131,15 +131,6 @@
     }
 }
 
-/// 设置返回按钮
-- (UIButton *)setLeftBackBtn:(NSString *)imageName{
-    __weak typeof(self) weakSelf = self;
-    UIButton *backBtn = [self setLeftBtnWithImageName:imageName clickAction:^(UIButton * _Nonnull sender) {
-        [weakSelf popVC];
-    }];
-    return backBtn;
-}
-
 /// 设置导航栏左按钮--图片
 - (UIButton *)setLeftBtnWithImageName:(NSString *)imageName clickAction:(BtnClickBlock)block{
     UIButton *backBtn = [UIButton createWithImageName:imageName];

@@ -8,6 +8,7 @@
 
 #import "UILabel+Helpers.h"
 #import "NSObject+Helpers.h"
+#import "NSString+Helpers.h"
 
 #define DEFAULT_FONT [UIFont fontWithName:@"PingFang-SC-Regular" size:14]
 @implementation UILabel (Helpers)
@@ -113,6 +114,7 @@
     }
     
     NSString *content = [strArray componentsJoinedByString:@""];
+    NSString *copyContent = [content mutableCopy];
     NSMutableAttributedString *attrContent = [[NSMutableAttributedString alloc]initWithString:content];
     for (NSInteger i = 0; i<indexs.count; i++) {
         NSArray<NSNumber *> *indexArray = indexs[i];
@@ -122,7 +124,9 @@
             NSUInteger index = [indexArray[j] integerValue];
             NSAssert(index<strArray.count, @"下标数组越界，请仔细检查下标数组是否正确");
             NSString *str = strArray[index];
-            NSRange range = [content rangeOfString:str];
+            /// 防止重复字符串中之后的查找不到
+            NSRange range = [copyContent rangeOfString:str];
+            copyContent = [copyContent replaceWithScureInRange:range];
             if (color != nil) {
                 [attrContent addAttribute:NSForegroundColorAttributeName value:color range:range];
             }

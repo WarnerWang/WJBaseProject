@@ -46,9 +46,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 返回前index的视图
 - (void)popToIndex:(NSInteger)index;
 
-/// 设置返回按钮
-- (UIButton *)setLeftBackBtn:(NSString *)imageName;
-
 /// 设置导航栏左按钮--图片
 - (UIButton *)setLeftBtnWithImageName:(NSString *)imageName clickAction:(BtnClickBlock)block;
 

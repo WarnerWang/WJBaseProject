@@ -40,12 +40,12 @@
     self.navigationBarHidden = NO;
     [self setLeftBackBtn:@"icon_fanhui"];
     self.view.backgroundColor = [UIColor randomColor];
-    [self setRightBtnWithTitle:@"网页" clickAction:^(UIButton * _Nonnull sender) {
-        WJWebVC *webVC = [[WJWebVC alloc]init];
-        webVC.changeTitle = YES;
-        [webVC addWebView:@"https://www.baidu.com"];
-        [self pushNextVCByInstance:webVC];
-    }];
+//    [self setRightBtnWithTitle:@"网页" clickAction:^(UIButton * _Nonnull sender) {
+//        WJWebVC *webVC = [[WJWebVC alloc]init];
+//        webVC.changeTitle = YES;
+//        [webVC addWebView:@"https://www.baidu.com"];
+//        [self pushNextVCByInstance:webVC];
+//    }];
 }
 
 - (void)setNavigationBarHidden:(BOOL)navigationBarHidden{
@@ -73,6 +73,18 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
+}
+
+- (void)setLeftBackBtn:(NSString *)imageName{
+    typeof(self) weakself = self;
+    [self setLeftBtnWithImageName:imageName clickAction:^(UIButton * _Nonnull sender) {
+        [weakself backBtnClicked:sender];
+    }];
+}
+
+// 返回按钮的点击
+- (void)backBtnClicked:(UIButton *)sender{
+    [self popVC];
 }
 
 @end
