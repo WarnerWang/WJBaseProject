@@ -9,29 +9,13 @@
 #ifndef WJ_APP_CONFIG_h
 #define WJ_APP_CONFIG_h
 
-// 是否是线上版本
-#define IS_RELEASE 1
-// 是否需要加密
-#define DES_ENABLE YES
-// 默认秘钥
-#define DES_KEY @"hxsports"
+#import "WJApiHostHelper.h"
 
-#if IS_RELEASE
-
-// ----------------------   正式环境配置参数  -------------------------
-#define BASE_URL @""
-#define DES_BASE_URL @""
-#define UPLOAD_URL @""
-#define DES_UPLOAD_URL @""
-
-#else
-
-// ----------------------   测试环境配置参数  -------------------------
-#define BASE_URL @""
-#define DES_BASE_URL @""
-#define UPLOAD_URL @""
-#define DES_UPLOAD_URL @""
-
-#endif
+// 接口地址
+#define BASE_URL [WJApiHostHelper getBaseUrl]
+#define DES_BASE_URL [WJApiHostHelper getBaseUrl]
+// 上传接口地址
+#define DES_UPLOAD_URL [WJApiHostHelper getUploadUrl]
+#define UPLOAD_URL [WJApiHostHelper getUploadUrl]
 
 #endif /* WJ_APP_CONFIG_h */

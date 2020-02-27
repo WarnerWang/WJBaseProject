@@ -50,6 +50,7 @@
 		F3955921224A149D00A8750A /* WJWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3955920224A149D00A8750A /* WJWKWebView.m */; };
 		F3955924224A14C800A8750A /* WJScriptMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F3955923224A14C800A8750A /* WJScriptMessage.m */; };
 		F395592B224A1A5E00A8750A /* WJWebVC.h.m in Sources */ = {isa = PBXBuildFile; fileRef = F395592A224A1A5E00A8750A /* WJWebVC.h.m */; };
+		F3B905712407C08100277724 /* WJApiHostHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B905702407C08100277724 /* WJApiHostHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		F3955923224A14C800A8750A /* WJScriptMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJScriptMessage.m; sourceTree = "<group>"; };
 		F3955929224A1A5E00A8750A /* WJWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJWebVC.h; sourceTree = "<group>"; };
 		F395592A224A1A5E00A8750A /* WJWebVC.h.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJWebVC.h.m; sourceTree = "<group>"; };
+		F3B9056F2407C08100277724 /* WJApiHostHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJApiHostHelper.h; sourceTree = "<group>"; };
+		F3B905702407C08100277724 /* WJApiHostHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJApiHostHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				F330E19B224B1D1A004F4D52 /* request */,
 				F330E1A6224B75A7004F4D52 /* WJHttpHelper.h */,
 				F330E1A7224B75A7004F4D52 /* WJHttpHelper.m */,
+				F3B9056F2407C08100277724 /* WJApiHostHelper.h */,
+				F3B905702407C08100277724 /* WJApiHostHelper.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				F39559072249FD2100A8750A /* WJBaseView.m in Sources */,
 				F330E190224B1C26004F4D52 /* UIImageView+Helpers.m in Sources */,
 				F330E198224B1C26004F4D52 /* NSString+Helpers.m in Sources */,
+				F3B905712407C08100277724 /* WJApiHostHelper.m in Sources */,
 				F330E177224B1C13004F4D52 /* UIDevice+Helpers.m in Sources */,
 				F330E173224B1C13004F4D52 /* UIFont+Helpers.m in Sources */,
 				F39559012249DDF500A8750A /* WJBaseSVC.m in Sources */,

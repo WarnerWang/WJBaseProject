@@ -10,6 +10,9 @@
 #import "NSString+Helpers.h"
 #import "WJ_APP_CONFIG.h"
 
+UIKIT_EXTERN NSString *const kDefaultDesKey;
+UIKIT_EXTERN BOOL const kDesEnable;
+
 @implementation WJRequestHeader
 
 - (instancetype)init
@@ -65,8 +68,8 @@
     //    [dict setObject:self.transcode forKey:@"transcode"];
     
     NSString *jsonString = super.yy_modelToJSONString;
-    if (DES_ENABLE) {
-        NSString *encryptDes = [jsonString encryptUseDes:self.scretKey];
+    if (kDesEnable) {
+        NSString *encryptDes = [NSString encryptUseDES:jsonString key:self.scretKey];
         [dict setObject:encryptDes forKey:@"content"];
     }else {
         [dict setObject:jsonString forKey:@"content"];
@@ -80,8 +83,8 @@
 }
 
 - (NSString *)toEncryptJsonString{
-    if (DES_ENABLE) {
-        return [[NSString convertToJsonString:[self toEncryptDictonary]] encryptUseDes:DES_KEY];
+    if (kDesEnable) {
+        return [NSString encryptUseDES:[NSString convertToJsonString:[self toEncryptDictonary]] key:kDefaultDesKey];
     }
     return [self toJsonString];
 }

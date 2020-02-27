@@ -17,6 +17,9 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     HttpParamTypeDict,         //字典
 };
 
+UIKIT_EXTERN NSString *const kDefaultDesKey;
+UIKIT_EXTERN BOOL const kDesEnable;
+
 @implementation WJHttpHelper
 
 /// 改成单例是因为由于ARC机制导致每当实例化session类后都没有地方释放掉实例会造成内存泄露
@@ -44,11 +47,11 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
 /// 处理请求返回结果
 + (void)handleWithRequest:(WJRequest *)request result:(id)result sucBlock:(PostRequestSucBlock)sucBlock responseErrorBlock:(ResponseErrorBlock)responseErrorBlock endRefreshBlock:(EndRefreshBlock)endRefreshBlock{
     
-    if (DES_ENABLE) {
+    if (kDesEnable) {
 #ifdef DEBUG
         NSLog(@"返回解密前的数据：%@",result);
 #endif
-        result = [((NSString *)result) decryptUseDES:DES_KEY];
+        result = [NSString decryptUseDES:result key:kDefaultDesKey];
         
 #ifdef DEBUG
         NSLog(@"返回解密数据 transcode：%@ -- result：%@",request.transcode,result);
@@ -162,7 +165,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     }
     
     if ([NSString isEmpty:urlStr]) {
-        if (DES_ENABLE) {
+        if (kDesEnable) {
             urlStr = [[DES_BASE_URL stringByAppendingString:request.transcode] copy];
         }else {
             urlStr = [[BASE_URL stringByAppendingString:request.transcode] copy];
@@ -172,7 +175,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     
 #ifdef DEBUG
     
-    if (DES_ENABLE) {
+    if (kDesEnable) {
         NSLog(@"请求加密前：%@ \n url:%@",[request toJsonString],urlStr);
         
         NSLog(@"请求加密后：%@",params);
@@ -269,7 +272,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     
     
     if ([NSString isEmpty:urlStr]) {
-        if (DES_ENABLE) {
+        if (kDesEnable) {
             urlStr = [DES_UPLOAD_URL copy];
         }else {
             urlStr = [UPLOAD_URL copy];
@@ -278,7 +281,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     
 #ifdef DEBUG
     
-        if (DES_ENABLE) {
+        if (kDesEnable) {
             NSLog(@"请求加密前：%@ \n url:%@",[request toDictionary],urlStr);
         }else {
             NSLog(@"请求参数： %@,url:%@",params,urlStr);
@@ -370,7 +373,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     }
     
     if ([NSString isEmpty:urlStr]) {
-        if (DES_ENABLE) {
+        if (kDesEnable) {
             urlStr = [[DES_BASE_URL stringByAppendingString:request.transcode] copy];
         }else {
             urlStr = [[BASE_URL stringByAppendingString:request.transcode] copy];
@@ -380,7 +383,7 @@ typedef NS_ENUM(NSInteger, HttpParamType) {
     
 #ifdef DEBUG
     
-    if (DES_ENABLE) {
+    if (kDesEnable) {
         NSLog(@"请求加密前：%@ \n url:%@",[request toJsonString],urlStr);
         
         NSLog(@"请求加密后：%@",params);

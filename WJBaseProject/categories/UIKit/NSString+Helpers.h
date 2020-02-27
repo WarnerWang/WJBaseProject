@@ -71,10 +71,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)md5_32;
 
 /// DES加密
-- (NSString *)encryptUseDes:(NSString *)key;
++(NSString *)encryptUseDES:(NSString *)string key:(NSString *)key;
 
-/// DES解密
-- (NSString *)decryptUseDES:(NSString *)key;
+/// des 解密
++ (NSString *)decryptUseDES:(NSString*)cipherText key:(NSString*)key;
 
 /// app版本号
 + (NSString *)appVersion;

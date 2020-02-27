@@ -241,11 +241,15 @@
             result[12], result[13], result[14], result[15]];
 }
 
-/// DES加密
-- (NSString *)encryptUseDes:(NSString *)key{
-    NSString *result = nil;
-    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
++(NSString *)encryptUseDES:(NSString *)string key:(NSString *)key{
+    NSData *data=[string dataUsingEncoding:NSUTF8StringEncoding];
     
+    data=[NSString DESEncrypt:data WithKey:key];
+    return [[NSString alloc] initWithData:[GTMBase64 encodeData:data] encoding:NSUTF8StringEncoding];
+}
+
++ (NSData *)DESEncrypt:(NSData *)data WithKey:(NSString *)key
+{
     char keyPtr[kCCKeySizeAES256+1];
     bzero(keyPtr, sizeof(keyPtr));
     
@@ -265,17 +269,19 @@
                                           buffer, bufferSize,
                                           &numBytesEncrypted);
     if (cryptStatus == kCCSuccess) {
-        NSData *resultData = [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
-        result = [[NSString alloc] initWithData:[GTMBase64 encodeData:resultData] encoding:NSUTF8StringEncoding];
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
     }
     
     free(buffer);
-    return result;
+    return nil;
 }
 
-/// DES解密
-- (NSString *)decryptUseDES:(NSString *)key{
-    NSString *cipherText = [self stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+
+/*
+ * des 解密
+ */
++ (NSString *)decryptUseDES:(NSString*)cipherText key:(NSString*)key{
+    cipherText = [cipherText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     NSData* cipherData = [GTMBase64 decodeString:cipherText];
     
     char keyPtr[kCCKeySizeAES256+1];
@@ -305,6 +311,7 @@
     free(buffer);
     
     return nil;
+    
 }
 
 + (NSString *)appVersion{
